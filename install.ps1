@@ -176,7 +176,18 @@ function Parse-Arguments {
 
 function Get-FileSha256 {
     param([string]$FilePath)
-    return (Get-FileHash -Path $FilePath -Algorithm SHA256).Hash.ToLowerInvariant()
+    $sha = [System.Security.Cryptography.SHA256]::Create()
+    try {
+        $stream = [System.IO.File]::OpenRead($FilePath)
+        try {
+            $hashBytes = $sha.ComputeHash($stream)
+            return ([System.BitConverter]::ToString($hashBytes) -replace '-', '').ToLowerInvariant()
+        } finally {
+            $stream.Dispose()
+        }
+    } finally {
+        $sha.Dispose()
+    }
 }
 
 function Resolve-TargetDirectory {
