@@ -1,0 +1,32 @@
+{
+  "name": "secure-implementation",
+  "version": "0.1.0",
+  "min_spec_version": "0.1.0",
+  "license": "Apache-2.0",
+  "category": "implementation",
+  "compatibility": {
+    "antigravity": "verified",
+    "claude-code": "experimental",
+    "codex": "experimental",
+    "gemini-cli": "experimental",
+    "cursor": "experimental",
+    "github-copilot": "experimental"
+  },
+  "references": [
+    "../appsec/references/security-principles.md",
+    "../appsec/references/authentication.md",
+    "../appsec/references/authorization.md",
+    "../appsec/references/api-security.md",
+    "../appsec/references/sql-security.md",
+    "../appsec/references/backend-security.md",
+    "../appsec/references/frontend-security.md"
+  ],
+  "templates": [
+    "../appsec/templates/threat-model.md"
+  ],
+  "standards": [
+    "OWASP ASVS 4.0.3",
+    "NIST SSDF 1.1"
+  ]
+}
+

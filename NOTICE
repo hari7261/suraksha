@@ -1,0 +1,17 @@
+Suraksha
+Copyright 2026 Hari
+
+Licensed under the Apache License, Version 2.0.
+
+This repository provides reusable Agent Skills and application security
+engineering references aligned with:
+- Agent Skills specification (https://agentskills.io/)
+- OWASP Top 10 (2021)
+- OWASP Application Security Verification Standard (ASVS 4.0.3)
+- OWASP API Security Top 10 (2023)
+- OWASP Mobile Application Security Verification Standard (MASVS 2.1.0)
+- OWASP Top 10 for LLM Applications (2025) / OWASP GenAI Security Project
+- CWE (MITRE) and NIST SSDF (1.1)
+
+No third-party scanner binaries or runtime libraries are bundled in this
+repository.

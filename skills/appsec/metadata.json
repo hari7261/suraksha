@@ -1,0 +1,50 @@
+{
+  "name": "appsec",
+  "version": "0.1.0",
+  "min_spec_version": "0.1.0",
+  "license": "Apache-2.0",
+  "category": "core",
+  "compatibility": {
+    "antigravity": "verified",
+    "claude-code": "experimental",
+    "codex": "experimental",
+    "gemini-cli": "experimental",
+    "cursor": "experimental",
+    "github-copilot": "experimental"
+  },
+  "references": [
+    "references/security-principles.md",
+    "references/threat-modeling.md",
+    "references/sql-security.md",
+    "references/authentication.md",
+    "references/authorization.md",
+    "references/api-security.md",
+    "references/frontend-security.md",
+    "references/backend-security.md",
+    "references/database-security.md",
+    "references/cryptography.md",
+    "references/secrets-management.md",
+    "references/dependency-security.md",
+    "references/mobile-security.md",
+    "references/cloud-security.md",
+    "references/container-security.md",
+    "references/ai-agent-security.md",
+    "references/rag-security.md",
+    "references/mcp-security.md",
+    "references/logging-and-privacy.md"
+  ],
+  "templates": [
+    "templates/security-review.md",
+    "templates/threat-model.md",
+    "templates/remediation-plan.md"
+  ],
+  "standards": [
+    "OWASP Top 10 (2021)",
+    "OWASP ASVS 4.0.3",
+    "OWASP API Security Top 10 (2023)",
+    "OWASP MASVS 2.1.0",
+    "OWASP Top 10 for LLM Applications (2025)",
+    "NIST SSDF 1.1"
+  ]
+}
+

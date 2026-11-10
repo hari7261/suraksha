@@ -1,0 +1,18 @@
+# OS & Editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Temporary & backup artifacts
+*.tmp
+*.bak.*
+.suraksha-tmp/
+
+# Python bytecode (if running validation scripts)
+__pycache__/
+*.py[cod]

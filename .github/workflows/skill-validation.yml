@@ -1,0 +1,56 @@
+name: Skill Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-unix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Set up Python
+        uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Validate skills, schemas, links, and 10-part references
+        run: python3 scripts/validate_skill.py
+
+      - name: Run skill unit and golden-prompt tests
+        run: python3 -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Test POSIX installer dry-run, install, upgrade, and uninstall
+        run: |
+          TMP_DIR="$(mktemp -d)"
+          ./install.sh --list
+          ./install.sh --target "$TMP_DIR/skills" --dry-run
+          ./install.sh --target "$TMP_DIR/skills"
+          test -f "$TMP_DIR/skills/.suraksha-install.json"
+          test -f "$TMP_DIR/skills/appsec/SKILL.md"
+          ./install.sh --target "$TMP_DIR/skills" --upgrade
+          ./install.sh --target "$TMP_DIR/skills" --uninstall
+          test ! -f "$TMP_DIR/skills/.suraksha-install.json"
+          rm -rf "$TMP_DIR"
+
+  validate-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Validate skills with PowerShell
+        shell: pwsh
+        run: .\scripts\validate_skill.ps1
+
+      - name: Run Windows PowerShell & CMD installer safety tests
+        shell: pwsh
+        run: .\tests\test_installers.ps1
+

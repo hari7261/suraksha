@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://suraksha.dev/schemas/metadata.schema.json",
+  "title": "Suraksha Skill Metadata Schema",
+  "description": "Validates metadata.json alongside each SKILL.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "version",
+    "min_spec_version",
+    "license",
+    "category",
+    "compatibility",
+    "references"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(-[a-zA-Z0-9.]+)?$"
+    },
+    "min_spec_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(-[a-zA-Z0-9.]+)?$"
+    },
+    "license": {
+      "type": "string",
+      "minLength": 2
+    },
+    "category": {
+      "type": "string",
+      "enum": ["core", "review", "implementation", "remediation"]
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["verified", "experimental", "unsupported"]
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "templates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "standards": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
+

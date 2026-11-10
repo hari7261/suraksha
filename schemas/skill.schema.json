@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://suraksha.dev/schemas/skill.schema.json",
+  "title": "Suraksha Agent Skill Frontmatter Schema",
+  "description": "Validates SKILL.md YAML frontmatter following the Agent Skills specification plus Suraksha metadata.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "description",
+    "license",
+    "version",
+    "min_engine_version"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "minLength": 2,
+      "maxLength": 64,
+      "description": "Lowercase hyphenated unique skill identifier matching the parent directory name."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 1024,
+      "description": "Concise third-person description explaining what the skill does and when to activate it."
+    },
+    "license": {
+      "type": "string",
+      "minLength": 2,
+      "description": "SPDX license identifier (e.g., Apache-2.0)."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(-[a-zA-Z0-9.]+)?$",
+      "description": "Semantic version of the skill."
+    },
+    "min_engine_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(-[a-zA-Z0-9.]+)?$",
+      "description": "Minimum Suraksha skill specification version required."
+    },
+    "activation_triggers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["keywords"],
+        "properties": {
+          "keywords": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      "description": "Advisory keyword groups for progressive disclosure routing."
+    },
+    "compatibility": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Optional list of compatible AI coding agents."
+    }
+  }
+}
+

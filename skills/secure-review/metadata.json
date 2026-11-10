@@ -1,0 +1,29 @@
+{
+  "name": "secure-review",
+  "version": "0.1.0",
+  "min_spec_version": "0.1.0",
+  "license": "Apache-2.0",
+  "category": "review",
+  "compatibility": {
+    "antigravity": "verified",
+    "claude-code": "experimental",
+    "codex": "experimental",
+    "gemini-cli": "experimental",
+    "cursor": "experimental",
+    "github-copilot": "experimental"
+  },
+  "references": [
+    "../appsec/references/security-principles.md",
+    "../appsec/references/threat-modeling.md",
+    "../appsec/references/logging-and-privacy.md"
+  ],
+  "templates": [
+    "../appsec/templates/security-review.md"
+  ],
+  "standards": [
+    "OWASP Top 10 (2021)",
+    "OWASP ASVS 4.0.3",
+    "NIST SSDF 1.1"
+  ]
+}
+
